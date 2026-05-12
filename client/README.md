@@ -1,84 +1,10 @@
 ﻿# Student Management System
 
-A secure Student Management System built with React, TypeScript, Node.js, Express, and MongoDB.
+A secure Student Management System built using React, TypeScript, Node.js, Express, and MongoDB.
 
-## Setup Instructions
+---
 
-1. Clone the repository:
-   ```bash
-   git clone <repo-url>
-   cd task-react-node-typescript
-   ```
-2. Install dependencies for both apps:
-   ```bash
-   cd client
-   npm install
-
-   cd ../server
-   npm install
-   ```
-3. Create a MongoDB database and update `server/.env` if needed.
-4. Start the backend server:
-   ```bash
-   cd server
-   npm run dev
-   ```
-5. Start the frontend app:
-   ```bash
-   cd ../client
-   npm run dev
-   ```
-
-## Tech Stack
-
-- Frontend:
-  - React
-  - TypeScript
-  - Vite
-  - Axios
-  - TanStack React Query
-  - React Hot Toast
-  - crypto-js
-- Backend:
-  - Node.js
-  - Express
-  - TypeScript
-  - Mongoose
-  - bcryptjs
-  - crypto-js
-- Database:
-  - MongoDB
-
-## How Encryption is Implemented
-
-This project uses a two-layer encryption strategy for student personal data:
-
-1. **Frontend encryption**
-   - Sensitive fields (`fullName`, `email`, `phoneNumber`, `address`) are encrypted using AES before being sent to the backend.
-   - This ensures that plaintext values are never transmitted directly.
-
-2. **Backend encryption**
-   - The backend decrypts the frontend-encrypted values, then re-encrypts them with a second AES key.
-   - Encrypted data is stored in MongoDB, while the backend keeps the encryption secret.
-
-3. **Deterministic login lookup**
-   - Because AES encryption includes a random IV/salt, the same plaintext encrypts differently each time.
-   - The backend computes a deterministic SHA256 hash of the decrypted email and stores it in the `emailHash` field.
-   - During login, the backend decrypts the frontend email, hashes it, and searches by `emailHash`.
-
-4. **Password hashing**
-   - Passwords are hashed using `bcryptjs` before storage.
-   - Plaintext passwords are never stored.
-
-## API Endpoints
-
-- `POST /api/register` — register a new student
-- `POST /api/login` — login a student
-- `GET /api/students` — fetch all students
-- `PUT /api/student/:id` — update student details
-- `DELETE /api/student/:id` — delete a student
-
-## Project Features
+# Features
 
 - Secure student registration and login
 - Two-layer AES encryption for sensitive data
@@ -86,6 +12,255 @@ This project uses a two-layer encryption strategy for student personal data:
 - CRUD operations for student records
 - Toast notifications for success and error feedback
 - Session persistence across refresh
+- React Query integration for API state management
 
-## Sample Screenshots
+---
 
+# Tech Stack
+
+## Frontend
+
+- React
+- TypeScript
+- Vite
+- Axios
+- TanStack React Query
+- React Hot Toast
+- Tailwind CSS
+- crypto-js
+
+## Backend
+
+- Node.js
+- Express
+- TypeScript
+- Mongoose
+- bcryptjs
+- crypto-js
+
+## Database
+
+- MongoDB
+
+---
+
+# Project Structure
+
+```bash
+student-registration/
+│
+├── client/          # Frontend React App
+├── server/          # Backend Node/Express API
+└── README.md
+```
+
+---
+
+# Setup Instructions
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/Prikansi/student-registration.git
+cd task-react-node-typescript
+```
+
+---
+
+## 2. Install Dependencies
+
+### Frontend
+
+```bash
+cd client
+npm install
+```
+
+### Backend
+
+```bash
+cd ../server
+npm install
+```
+
+---
+
+# Environment Variables
+
+Create a `.env` file inside the `server` folder.
+
+## server/.env
+
+```env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/student-encrypted-db
+```
+
+---
+
+# Run the Project
+
+## Start Backend Server
+
+```bash
+cd server
+npm run dev
+```
+
+Backend runs on:
+
+```bash
+http://localhost:5000
+```
+
+---
+
+## Start Frontend App
+
+```bash
+cd client
+npm run dev
+```
+
+Frontend runs on:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/register` | Register a new student |
+| POST | `/api/login` | Login student |
+| GET | `/api/students` | Fetch all students |
+| PUT | `/api/student/:id` | Update student details |
+| DELETE | `/api/student/:id` | Delete student |
+
+---
+
+# Authentication & Encryption Flow
+
+This project uses a secure two-layer encryption strategy for protecting student data.
+
+## 1. Frontend Encryption
+
+Sensitive fields such as:
+
+- Full Name
+- Email
+- Phone Number
+- Address
+
+are encrypted using AES encryption before being sent to the backend.
+
+This ensures plaintext data is never transmitted directly.
+
+---
+
+## 2. Backend Encryption
+
+The backend:
+
+1. Decrypts frontend-encrypted data
+2. Re-encrypts the data using another AES secret key
+3. Stores encrypted values in MongoDB
+
+This provides double-layer security.
+
+---
+
+## 3. Deterministic Email Hashing
+
+AES encryption generates different encrypted values each time because it uses random salts/IVs.
+
+To support login lookup:
+
+- Backend decrypts the email
+- Generates a SHA256 hash
+- Stores it in `emailHash`
+
+During login:
+
+1. Email is decrypted
+2. SHA256 hash is generated again
+3. Student is searched using `emailHash`
+
+---
+
+## 4. Password Security
+
+Passwords are securely hashed using `bcryptjs`.
+
+- Plaintext passwords are never stored
+- Password verification uses bcrypt compare
+
+---
+
+# Frontend Features
+
+- Student Registration
+- Student Login
+- Student CRUD Operations
+- Search Students
+- React Query API Integration
+- Toast Notifications
+- Loading States
+- Form Validation
+
+---
+
+# Backend Features
+
+- REST API with Express
+- MongoDB Integration using Mongoose
+- Secure Encryption Utilities
+- Password Hashing
+- Authentication Handling
+- Error Handling Middleware
+
+---
+
+# Screenshots
+
+## Login Page
+
+_Add screenshot here_
+
+---
+
+## Student Dashboard
+
+_Add screenshot here_
+
+---
+
+## Student Form
+
+_Add screenshot here_
+
+---
+
+# Future Improvements
+
+- JWT Authentication
+- Role-based Authorization
+- Pagination
+- File Uploads
+- Profile Photos
+- Dark Mode
+- Unit Testing
+- Docker Deployment
+
+---
+
+# Author
+
+## Prikansi
+
+GitHub Repository:
+
+https://github.com/Prikansi/student-registration
