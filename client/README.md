@@ -2,6 +2,22 @@
 
 A secure Student Management System built using React, TypeScript, Node.js, Express, and MongoDB.
 
+# Backend Setup
+
+1. Install Node.js
+2. Install MongoDB locally
+3. Start MongoDB service
+4. Create .env file
+
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/student-encrypted-db
+
+
+5. Run:
+
+npm install
+npm run dev
+
 ---
 
 # Features

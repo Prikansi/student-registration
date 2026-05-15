@@ -1,11 +1,13 @@
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 import app from './app';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import Student from './models/Student';
 import { encryptFrontendData, encryptBackendData, hashEmail } from './utils/crypto';
 
-dotenv.config();
 
 const seedDefaultUser = async () => {
   const existing = await Student.findOne({ emailHash: hashEmail('john@example.com') });
