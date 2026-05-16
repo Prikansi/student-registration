@@ -43,9 +43,8 @@ API.interceptors.response.use(
       if (status === 401) {
         // 🔥 Token expired / invalid
         localStorage.removeItem('token')
-
-        // redirect to login
-        window.location.href = '/login'
+        console.warn('Unauthorized request. Please login again.')
+        // Do not redirect automatically because this app uses modal login, not a route-based /login page.
       }
 
       if (status === 404) {
