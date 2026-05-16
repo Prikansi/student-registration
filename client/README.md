@@ -2,6 +2,15 @@
 
 A secure Student Management System built using React, TypeScript, Node.js, Express, and MongoDB.
 
+.env backend(server) file-________________________________
+
+PORT=8000
+MONGO_URI=mongodb+srv://prikansi:Priks%402000@cluster0.m1erevu.mongodb.net/?appName=Cluster0
+
+.env frontend(Client)
+
+VITE_BASEURL=http://localhost:8000
+
 # Backend Setup
 
 1. Install Node.js

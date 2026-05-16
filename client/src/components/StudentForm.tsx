@@ -112,18 +112,7 @@ const StudentForm: React.FC<StudentFormProps> = ({
     <div className="student-form">
 
         <div className="header-left">
-  <button
-    type="button"
-    className="btn-back"
-    onClick={() => {
-      if (onCancelEdit) {
-        onCancelEdit()
-      }
-    }}
-    title="Go back"
-  >
-    ← Back
-  </button>
+ 
 
   {/* <h2>Student Management</h2> */}
 </div>
