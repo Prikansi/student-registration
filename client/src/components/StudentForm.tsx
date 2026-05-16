@@ -109,12 +109,18 @@ const StudentForm: React.FC<StudentFormProps> = ({
   }
 
   return (
+
+    <>
     <div className="student-form">
 
         <div className="header-left">
+<<<<<<< HEAD
  
+=======
+>>>>>>> 3e694e89d74f66b214fdf5d21101c465b73aba36
 
-  {/* <h2>Student Management</h2> */}
+
+  {/* <h2 className='text-blue-100'>Student Managementhj</h2> */}
 </div>
       <h2>
         {editingStudent
@@ -274,6 +280,9 @@ const StudentForm: React.FC<StudentFormProps> = ({
         </div>
       </form>
     </div>
+    
+    </>
+    
   )
 }
 
