@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import StudentForm from './StudentForm';
-import './Dashboard.css';
 
 interface DashboardProps {
   onLogin: (student: any) => void;
@@ -17,21 +16,25 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-container">
-        <div className="dashboard-content">
-          <h1>Student Management System</h1>
-          <p>Welcome to the Student Management Portal</p>
-          
-          <div className="button-group">
-            <button 
-              className="btn btn-primary btn-large"
+    <div className="dashboard min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-700 p-5">
+      <div className="dashboard-container max-w-lg w-full">
+        <div className="dashboard-content text-center bg-white p-12 rounded-xl shadow-2xl">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Student Management System
+          </h1>
+          <p className="text-gray-600 text-lg mb-10">
+            Welcome to the Student Management Portal
+          </p>
+
+          <div className="button-group flex gap-5 justify-center flex-col sm:flex-row">
+            <button
+              className="btn btn-primary btn-large bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all transform hover:scale-105"
               onClick={() => setShowLoginModal(true)}
             >
               Login
             </button>
-            <button 
-              className="btn btn-secondary btn-large"
+            <button
+              className="btn btn-secondary btn-large bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all transform hover:scale-105"
               onClick={() => setShowRegisterModal(true)}
             >
               Register
@@ -40,14 +43,31 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogin }) => {
         </div>
       </div>
 
+      {/* Login Modal */}
       {showLoginModal && (
-        <div className="modal-overlay" onClick={handleBackClick}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <button className="modal-back" onClick={handleBackClick}>← Back</button>
-              <button className="modal-close" onClick={handleBackClick}>×</button>
+        <div
+          className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-5"
+          onClick={handleBackClick}
+        >
+          <div
+            className="modal-content bg-white rounded-xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
+              <button
+                className="modal-back bg-none border-none text-indigo-600 cursor-pointer font-semibold hover:text-indigo-700 transition-colors"
+                onClick={handleBackClick}
+              >
+                ← Back
+              </button>
+              <button
+                className="modal-close absolute top-4 right-4 bg-none border-none text-3xl cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
+                onClick={handleBackClick}
+              >
+                ×
+              </button>
             </div>
-            <LoginForm 
+            <LoginForm
               onLogin={(student) => {
                 setShowLoginModal(false);
                 onLogin(student);
@@ -61,14 +81,31 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogin }) => {
         </div>
       )}
 
+      {/* Register Modal */}
       {showRegisterModal && (
-        <div className="modal-overlay" onClick={handleBackClick}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <button className="modal-back" onClick={handleBackClick}>← Back</button>
-              <button className="modal-close" onClick={handleBackClick}>×</button>
+        <div
+          className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-5"
+          onClick={handleBackClick}
+        >
+          <div
+            className="modal-content bg-white rounded-xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header flex justify-between items-center mb-5 pb-4 border-b border-gray-200">
+              <button
+                className="modal-back bg-none border-none text-indigo-600 cursor-pointer font-semibold hover:text-indigo-700 transition-colors"
+                onClick={handleBackClick}
+              >
+                ← Back
+              </button>
+              <button
+                className="modal-close absolute top-4 right-4 bg-none border-none text-3xl cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
+                onClick={handleBackClick}
+              >
+                ×
+              </button>
             </div>
-            <StudentForm 
+            <StudentForm
               onStudentAdded={() => {
                 setShowRegisterModal(false);
               }}
