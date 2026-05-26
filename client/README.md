@@ -2,32 +2,207 @@
 
 A secure Student Management System built using React, TypeScript, Node.js, Express, and MongoDB.
 
-.env backend(server) file-________________________________
+# Installation & Setup Guide
 
-PORT=8000
-MONGO_URI=mongodb+srv://prikansi:Priks%402000@cluster0.m1erevu.mongodb.net/?appName=Cluster0
-
-.env frontend(Client)
-
-VITE_BASEURL=http://localhost:8000
-
-# Backend Setup
-
-1. Install Node.js
-2. Install MongoDB locally
-3. Start MongoDB service
-4. Create .env file
-
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/student-encrypted-db
-
-
-5. Run:
-
-npm install
-npm run dev
+Follow the steps below to run this project locally on your machine.
 
 ---
+
+# Prerequisites
+
+Make sure the following software is installed on your system:
+
+- Node.js
+- Git
+- MongoDB Community Server
+
+---
+
+# 1. Clone Repository
+
+```bash
+git clone https://github.com/Prikansi/student-registration.git
+```
+
+Move into the project folder:
+
+```bash
+cd student-registration
+```
+
+---
+
+# 2. Backend Setup
+
+Move into server folder:
+
+```bash
+cd server
+```
+
+Install backend dependencies:
+
+```bash
+npm install
+```
+
+---
+
+# 3. Create Backend Environment Variables
+
+Create a `.env` file inside the `server` folder.
+
+### server/.env
+
+```env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/student-encrypted-db
+```
+
+---
+
+# 4. Start MongoDB Service
+
+Make sure MongoDB service is running.
+
+### Windows
+
+```bash
+net start MongoDB
+```
+
+---
+
+# 5. Run Backend Server
+
+Inside `server` folder run:
+
+```bash
+npm run dev
+```
+
+Backend server runs at:
+
+```bash
+http://localhost:5000
+```
+
+---
+
+# 6. Frontend Setup
+
+Open a new terminal.
+
+Move into client folder:
+
+```bash
+cd client
+```
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+---
+
+# 7. Create Frontend Environment Variables
+
+Create a `.env` file inside the `client` folder.
+
+### client/.env
+
+```env
+VITE_BASEURL=http://localhost:5000
+```
+
+---
+
+# 8. Run Frontend Application
+
+Inside `client` folder run:
+
+```bash
+npm run dev
+```
+
+Frontend application runs at:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 9. Open Application
+
+Open browser and visit:
+
+```bash
+http://localhost:5173
+```
++=====================================================================================
+---
+
+# Common Errors & Fixes
+
+## MongoDB Connection Error
+
+Make sure MongoDB service is running properly.
+
+---
+
+## Port Already In Use
+
+Change backend port inside:
+
+### server/.env
+
+```env
+PORT=5001
+```
+
+Then update frontend `.env`:
+
+### client/.env
+
+```env
+VITE_BASEURL=http://localhost:5001
+```
+
+---
+
+## npm install Hanging   (Use below command only in case of npm installation is hanging)
+
+Try:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+or:
+
+```bash
+npm cache clean --force
+```
+
+---
+
+## Cannot Find Module Error
+
+Install missing package manually.
+
+Example:
+
+```bash
+npm install qs
+```
+
+---
+
+
+
 
 # Features
 
@@ -81,79 +256,8 @@ student-registration/
 
 ---
 
-# Setup Instructions
 
-## 1. Clone Repository
 
-```bash
-git clone https://github.com/Prikansi/student-registration.git
-cd task-react-node-typescript
-```
-
----
-
-## 2. Install Dependencies
-
-### Frontend
-
-```bash
-cd client
-npm install
-```
-
-### Backend
-
-```bash
-cd ../server
-npm install
-```
-
----
-
-# Environment Variables
-
-Create a `.env` file inside the `server` folder.
-
-## server/.env
-
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/student-encrypted-db
-```
-
----
-
-# Run the Project
-
-## Start Backend Server
-
-```bash
-cd server
-npm run dev
-```
-
-Backend runs on:
-
-```bash
-http://localhost:5000
-```
-
----
-
-## Start Frontend App
-
-```bash
-cd client
-npm run dev
-```
-
-Frontend runs on:
-
-```bash
-http://localhost:5173
-```
-
----
 
 # API Endpoints
 
